@@ -57,7 +57,7 @@ wss.on("connection", async (socket) => {
         }
 
         if (data.cmd === "position") {
-            playerlist.update(uuid, data.content.x, data.content.y);
+            playerlist.update(uuid, data.content.x, data.content.y, data.content.z);
 
             const update = {
                 cmd: "update_position",
@@ -65,6 +65,7 @@ wss.on("connection", async (socket) => {
                     uuid,
                     x: data.content.x,
                     y: data.content.y
+                    z: data.content.z
                 }
             };
 

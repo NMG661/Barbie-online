@@ -21,17 +21,19 @@ const add = (uuid) => {
             uuid,
             "x": 620,
             "y": 300,
+            "z": 400,
         };
         players.push(player);
         resolve(true);
     });
 };
 
-const update = (uuid, newX, newY) => {
+const update = (uuid, newX, newY, newZ) => {
     players.map(player => {
         if (player.uuid !== uuid) return;
         player.x = newX;
         player.y = newY;
+        player.z = newZ;
     });
 };
 
