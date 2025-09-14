@@ -1,27 +1,20 @@
 let players = [];
 
 const getAll = () => {
-    return new Promise((resolve) => {
-        resolve(players);
-    });
+    return Promise.resolve(players);
 };
 
 const get = (uuid) => {
-    return new Promise((resolve) => {
-        players.map(player => {
-            if (player.uuid !== uuid) return;
-            resolve(player);
-        });
-    });
+    return Promise.resolve(players.find(player => player.uuid === uuid));
 };
 
 const add = (uuid) => {
     return new Promise((resolve) => {
         let player = {
             uuid,
-            "x": 620,
-            "y": 300,
-            "z": 400,
+            x: 0,   // posição inicial 3D (ajuste como quiser)
+            y: 1,
+            z: 0,
         };
         players.push(player);
         resolve(true);
@@ -29,11 +22,12 @@ const add = (uuid) => {
 };
 
 const update = (uuid, newX, newY, newZ) => {
-    players.map(player => {
-        if (player.uuid !== uuid) return;
-        player.x = newX;
-        player.y = newY;
-        player.z = newZ;
+    players.forEach(player => {
+        if (player.uuid === uuid) {
+            player.x = newX;
+            player.y = newY;
+            player.z = newZ;
+        }
     });
 };
 

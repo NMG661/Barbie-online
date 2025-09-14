@@ -64,8 +64,8 @@ wss.on("connection", async (socket) => {
                 content: {
                     uuid,
                     x: data.content.x,
-                    y: data.content.y
-                    z: data.content.z
+                    y: data.content.y,
+                    z: data.content.z   // corrigido (vírgula adicionada antes do z)
                 }
             };
 
